@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>US HipHop / R&B チャート</title>
+</head>
+<body>
+    <h1>US Hip Hop / R&B チャート</h1>
+    <ul>
+        {% for song in chart %}
+            <li>{{ song.rank }}位 - {{ song.title }} / {{ song.artist }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
