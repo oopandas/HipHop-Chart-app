@@ -5,10 +5,12 @@
     <title>US HipHop / R&B チャート</title>
 </head>
 <body>
-    <h1>US Hip Hop / R&B チャート</h1>
+    <h1>US Hip Hop / R&B チャート <small>(Last.fm APIより取得)</small></h1>
     <ul>
         {% for song in chart %}
             <li>{{ song.rank }}位 - {{ song.title }} / {{ song.artist }}</li>
+        {% empty %}
+            <li>チャートデータを取得できませんでした。</li>
         {% endfor %}
     </ul>
 </body>
