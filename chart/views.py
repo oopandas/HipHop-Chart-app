@@ -8,7 +8,9 @@ def get_chart_data(request):
     url = f"https://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=hiphop&api_key={API_KEY}&format=json"
 
     try:
-        response = requests.get(url)
+        # APIリクエスト(タイムアウト5秒)
+        response = requests.get(url, timeout=5)
+        response.raise_for_status()
         data = response.json()
         tracks = data["tracks"]["track"]
     except Exception as e:
@@ -19,7 +21,7 @@ def get_chart_data(request):
         ]
     chart = []
     # 曲名とアーティストを10件表示
-    for i, track in enumerate(data["tracks"]["track"][:10], start=1):
+    for i, track in enumerate(tracks[:10], start=1):
         chart.append({
             "rank": i,
             "title": track["name"],
@@ -27,6 +29,7 @@ def get_chart_data(request):
         })
 
     return render(request, "chart/chart_list.html", {"chart": chart})
+
 
 
 
