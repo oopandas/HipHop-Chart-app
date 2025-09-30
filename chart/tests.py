@@ -42,5 +42,13 @@ class ChartViewTests(TestCase):
         }
         response = self.client.get(reverse("chart:chart_list"))
         self.assertContains(response, "チャートデータを取得できませんでした。")
+    
+    def test_to_see_if_data_bs_dark_theme_is_included_in_html(self):
+        # ページを取得
+        response = self.client.get(reverse("chart:chart_list"))
+        # htmlを文字列化
+        html = response.content.decode()
+        # 指定の文字列が含まれているか確認
+        self.assertIn('data-bs-theme="dark"', html)
 
 
