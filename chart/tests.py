@@ -5,7 +5,8 @@ import requests
 
 class ChartViewTests(TestCase):
     @patch("chart.views.requests.get") # requests.getをモック
-    def test_fallback_to_mock_data_on_api_failure(self, mock_get):
+    # test_fallback_to_mock_data_on_api_failure
+    def test_whether_mock_data_is_displayed_when_the_api_fails(self, mock_get):
         #API呼び出しが失敗したことにする
         mock_get.side_effect = requests.RequestException("API down")
 

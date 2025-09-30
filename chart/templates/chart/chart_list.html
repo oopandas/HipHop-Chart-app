@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>US HipHop / R&B チャート</title>
-</head>
-<body>
-    <h1>US Hip Hop / R&B チャート <small>(Last.fm APIより取得)</small></h1>
-    <ul>
-        {% for song in chart %}
-            <li>{{ song.rank }}位 - <strong>{{ song.title }}</strong> ({{ song.artist }})</li>
-        {% empty %}
-            <li>チャートデータを取得できませんでした。</li>
-        {% endfor %}
-    </ul>
-</body>
+<html lang="ja" data-bs-theme="dark">
+    <head>
+        <meta charset="UTF-8">
+        <title>US HipHop </title>
+    </head>
+    <body>
+        <h1>US Hip Hop <small>(Last.fm APIより取得)</small></h1>
+        <ul>
+            {% for song in chart %}
+                <li>{{ song.rank }}位 - <strong>{{ song.title }}</strong> ({{ song.artist }})</li>
+            {% empty %}
+                <li>チャートデータを取得できませんでした。</li>
+            {% endfor %}
+        </ul>
+    </body>
 </html>
