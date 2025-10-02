@@ -51,4 +51,27 @@ class ChartViewTests(TestCase):
         # 指定の文字列が含まれているか確認
         self.assertIn('data-bs-theme="dark"', html)
 
+    def test_whether_the_link_tag_contains_the_Bootstrap_CDN(self):
+        # ページ取得
+        response = self.client.get(reverse("chart:chart_list"))
+        # htmlを文字列化
+        html = response.content.decode()
+        # linkタグにCDNが読み込まれているか
+        self.assertIn(
+            "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
+            html
+        )
+
+    def test_whether_the_script_tag_contains_the_Bootstrap_CDN(self):
+        # ページ取得
+        response = self.client.get(reverse("chart:chart_list"))
+        # htmlを文字列化
+        html = response.content.decode()
+        # スクリプトタグにCDNが読み込まれているか
+        self.assertIn(
+            "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js",
+            html
+        )
+
+
 
