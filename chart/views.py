@@ -30,6 +30,32 @@ def get_chart_data(request):
 
     return render(request, "chart/chart_list.html", {"chart": chart})
 
+def home_view(request):
+    return render(request, "chart/home.html")
+
+def genres_view(request):
+    genres = ["HipHop", "R&B", "Rock", "Reggae", "Pop"]
+    # genresのリストをgenres.htmlに渡す
+    return render(request, "chart/genres.html", {"genres": genres})
+
+def history_view(request):
+    history = [
+        {"title": "Mock Song 1", "artist": {"name": "Mock Artist A"}, "data": "2025-10-06"},
+        {"title": "Mock Song 2", "artist": {"name": "Mock Artist B"}, "data": "2025-10-06"},
+    ]
+    # historyのリストをhistory.htmlに移す
+    return render(request, "chart/history.html", {"history":history})
+
+def about_view(request):
+    # 固定情報は最初から辞書型
+    context = {
+        "app_name": "HipHop Chart Viewer",
+        "author": "kumagai",
+        "description": "このアプリはLast.fm APIから取得したHipHopチャートを自動で取得・表示します"
+    }
+    # 辞書で渡しているので引数は変数名でOK
+    return render(request, "chart/about.html", context)
+
 
 
 

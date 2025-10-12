@@ -55,7 +55,7 @@ ROOT_URLCONF = "music_chart.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "music_chart" / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
