@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 import requests
+from .models import ChartModel
 
 
 def get_chart_data(request):
@@ -55,6 +56,13 @@ def about_view(request):
     }
     # 辞書で渡しているので引数は変数名でOK
     return render(request, "chart/about.html", context)
+
+def chart_information_view(request):
+    # ChartModelのデータを全て取得
+    chart_information = ChartModel.objects.all()
+    # テンプレートに渡す
+    return render(request, "chart/chart_information.html", {"chart_information":chart_information})    
+
 
 
 
