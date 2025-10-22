@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import requests
 from .models import ChartModel
+from .forms import ChartForm
+
 
 
 def get_chart_data(request):
@@ -63,7 +65,18 @@ def chart_information_view(request):
     # テンプレートに渡す
     return render(request, "chart/chart_information.html", {"chart_information":chart_information})    
 
-
+def add_chart_view(request):
+    if request.method == "POST":
+        form = ChartForm(request.POST)
+        #入力が有効かどうかチェック
+        if form.is_valid():
+            # 保存
+            form.save()
+            # 保存後一覧ページへ推移
+            return redirect("chart:chart_information")
+    else:
+        form = ChartForm()
+    return render(request, "chart/add_chart.html", {"form": form})
 
 
 

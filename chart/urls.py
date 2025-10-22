@@ -10,4 +10,5 @@ urlpatterns = [
     path("history/", views.history_view, name="history"),
     path("about/", views.about_view, name="about"),
     path("chart_information/", views.chart_information_view, name="chart_information"),
+    path("add_chart/", views.add_chart_view, name="add_chart"),
 ]
